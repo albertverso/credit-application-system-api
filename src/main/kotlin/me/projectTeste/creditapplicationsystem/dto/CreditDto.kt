@@ -1,9 +1,6 @@
 package me.projectTeste.creditapplicationsystem.dto
 
-import jakarta.validation.constraints.Future
-import jakarta.validation.constraints.FutureOrPresent
-import jakarta.validation.constraints.Max
-import jakarta.validation.constraints.NotNull
+import jakarta.validation.constraints.*
 import me.projectTeste.creditapplicationsystem.entity.Credit
 import me.projectTeste.creditapplicationsystem.entity.Customer
 import java.math.BigDecimal
@@ -16,7 +13,7 @@ data class CreditDto(
     @field:FutureOrPresent()
     val dayFirstOfInstallment: LocalDate,
 
-    @field:Max(48, message = "Limit exceeded")
+    @field:Min(value = 1) @field:Max(value = 48)
     val numberOfInstallments: Int,
 
     @field:NotNull(message = "Invalid input")
